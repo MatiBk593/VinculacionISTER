@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - La Toglla</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Panel de Administración</h1>
+    </header>
+
+    <main class="section">
+        <h2>Gestionar Emprendimientos</h2>
+        <form id="emprendimiento-form">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="text" id="categoria" placeholder="Categoría" required>
+            <textarea id="descripcion" placeholder="Descripción" required></textarea>
+            <input type="text" id="contacto" placeholder="Contacto" required>
+            <input type="text" id="imagen_url" placeholder="URL de la imagen" required>
+            <button type="submit">Agregar</button>
+        </form>
+        <div id="admin-emprendimientos" class="cards"></div>
+
+        <hr>
+
+        <h2>Gestionar Noticias</h2>
+        <form id="noticia-form">
+            <input type="text" id="titulo" placeholder="Título" required>
+            <textarea id="contenido" placeholder="Contenido" required></textarea>
+            <input type="text" id="noticia_imagen_url" placeholder="URL de la imagen" required>
+            <button type="submit">Agregar</button>
+        </form>
+        <div id="admin-noticias" class="cards"></div>
+    </main>
+
+    <footer class="footer">
+        <a href="index.html">Volver al sitio</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
