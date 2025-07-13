@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
@@ -33,7 +32,7 @@ db.connect(err => {
 });
 
 // Rutas
-const authRoutes = require('./routes/auth')(db, bcrypt, jwt, SECRET_KEY);
+const authRoutes = require('./routes/auth')(db, jwt, SECRET_KEY);
 const emprendimientosRoutes = require('./routes/emprendimientos')(db);
 const noticiasRoutes = require('./routes/noticias')(db);
 

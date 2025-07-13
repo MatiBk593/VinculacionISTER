@@ -1,6 +1,6 @@
 const express = require('express');
 
-module.exports = (db, bcrypt, jwt, SECRET_KEY) => {
+module.exports = (db, jwt, SECRET_KEY) => {
     const router = express.Router();
 
     // Login
@@ -20,28 +20,19 @@ module.exports = (db, bcrypt, jwt, SECRET_KEY) => {
 
             const user = results[0];
 
-            // Comparar contraseñas de forma ASÍNCRONA
-            bcrypt.compare(password, user.password, (err, isMatch) => {
-                if (err) {
-                    console.error('❌ Error al comparar contraseñas:', err);
-                    return res.status(500).send('Error al comparar contraseñas');
-                }
+         if (password !== user.password) {
+    console.warn('⚠️ Contraseña incorrecta para usuario:', username);
+    return res.status(401).send('Contraseña incorrecta');
+}
 
-                if (!isMatch) {
-                    console.warn('⚠️ Contraseña incorrecta para usuario:', username);
-                    return res.status(401).send('Contraseña incorrecta');
-                }
+// Si la contraseña coincide, genera el token
+const token = jwt.sign(
+    { id: user.id, username: user.username },
+    SECRET_KEY,
+    { expiresIn: '1h' }
+);
+res.json({ token });
 
-                // Generar token JWT
-                const token = jwt.sign(
-                    { id: user.id, username: user.username },
-                    SECRET_KEY,
-                    { expiresIn: '1h' }
-                );
-
-                console.log('✅ Login exitoso para usuario:', username);
-                res.json({ token });
-            });
         });
     });
 

@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Usuario admin por defecto
 INSERT IGNORE INTO users (username, password)
-VALUES ('admin', '$2b$10$8uF7eDFKjKcH0UVruEg1vOJRMFq1Bl3aX4tFmpkI1k4D6zG/XL90i'); -- contraseña: admin123
+VALUES ('admin', 'admin123'); -- contraseña: admin123
 
 -- Tabla emprendimientos
 CREATE TABLE IF NOT EXISTS emprendimientos (
