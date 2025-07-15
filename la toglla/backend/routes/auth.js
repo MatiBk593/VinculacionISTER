@@ -1,6 +1,7 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 
-module.exports = (db, jwt, SECRET_KEY) => {
+module.exports = (db, SECRET_KEY) => {
     const router = express.Router();
 
     // Login

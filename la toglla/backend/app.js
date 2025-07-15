@@ -14,7 +14,8 @@ const SECRET_KEY = process.env.JWT_SECRET || 'latoglla_secret';
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use('/img', express.static(path.join(__dirname, 'public/img')));
+
 
 // Conexión MySQL
 const db = mysql.createConnection({
@@ -33,10 +34,9 @@ db.connect(err => {
 });
 
 // Rutas
-const authRoutes = require('./routes/auth')(db, bcrypt, jwt, SECRET_KEY);
+const authRoutes = require('./routes/auth')(db, SECRET_KEY);
 const emprendimientosRoutes = require('./routes/emprendimientos')(db);
 const noticiasRoutes = require('./routes/noticias')(db);
-
 app.use('/api/auth', authRoutes);
 app.use('/api/emprendimientos', emprendimientosRoutes);
 app.use('/api/noticias', noticiasRoutes);

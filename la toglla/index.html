@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Toglla - Comunidad Ancestral</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+    <!-- Logo en la esquina superior izquierda -->
+<header style="position: fixed; top: 10px; left: 10px; z-index: 1000;">
+  <img src="img/logo.jpg" alt="Logo Comunidad" style="height: 60px;">
+</header>
+
     <header class="header">
         <h1>Comunidad Ancestral La Toglla</h1>
         <nav>
@@ -25,11 +31,44 @@
         <section id="inicio" class="hero">
             <h2>Bienvenidos a La Toglla</h2>
             <p>Descubre nuestra cultura, gastronomía, artesanías y turismo comunitario.</p>
+            <!-- Carrusel dentro de la franja gris -->
+<div id="carousel" style="width: 100%; max-width: 800px; margin: 20px auto;">
+  <div class="carousel-container" style="position: relative; overflow: hidden; border-radius: 10px;">
+    <div class="carousel-slide" style="display: flex; transition: transform 0.5s ease;">
+    <img src="img/carrusel1.jpg" style="width: 100%; height: 300px; object-fit: cover; flex-shrink: 0;">
+    <img src="img/carrusel2.jpg" style="width: 100%; height: 300px; object-fit: cover; flex-shrink: 0;">
+    <img src="img/carrusel3.jpg" style="width: 100%; height: 300px; object-fit: cover; flex-shrink: 0;">
+
+    </div>
+    <!-- Botones de navegación -->
+    <button onclick="moveSlide(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 5px 10px;">⟨</button>
+    <button onclick="moveSlide(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 5px 10px;">⟩</button>
+  </div>
+</div>
+
+<script>
+  let slideIndex = 0;
+  const slide = document.querySelector('.carousel-slide');
+  const totalSlides = slide.children.length;
+
+  function moveSlide(step) {
+    slideIndex = (slideIndex + step + totalSlides) % totalSlides;
+    slide.style.transform = `translateX(-${slideIndex * 100}%)`;
+  }
+
+  setInterval(() => moveSlide(1), 4000); // Auto-slide cada 4 segundos
+</script>
+
         </section>
 
         <section id="quienes" class="section">
             <h2>Quiénes Somos</h2>
-            <p>Grupo 1 La Toglla es una comunidad ancestral ubicada en el Ilaló, comprometida con la preservación de sus tradiciones y el desarrollo de sus emprendimientos locales.</p>
+            <p>La Toglla es una comunidad ancestral ubicada en el Ilaló, comprometida con la preservación de sus tradiciones y el desarrollo de sus emprendimientos locales.</p>
+         <ul>
+      <li><strong>Misión:</strong> Promover la identidad cultural...</li>
+      <li><strong>Visión:</strong> Ser reconocidos por...</li>
+      <li><strong>Valores:</strong> Solidaridad, respeto a la tierra...</li>
+    </ul>
         </section>
 
         <section id="emprendimientos" class="section">
@@ -42,6 +81,21 @@
             <div id="noticias-container" class="cards"></div>
 
         </section>
+<section id="ubicacion" style="padding: 40px; background-color: #f2f2f2; text-align: center;">
+  <h2 style="margin-bottom: 20px;">¿Dónde estamos ubicados?</h2>
+  <p>La Toglla, parroquia Guangopolo, Quito, Ecuador</p>
+  <div style="margin-top: 20px;">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7806943572537!2d-78.44540202170414!3d-0.24883149885593683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d5970fca846907%3A0x436784b55deb5689!2sQH24%2BGFP%2C%20Quito%20170801!5e0!3m2!1ses-419!2sec!4v1752538753967!5m2!1ses-419!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      width="100%" 
+      height="400" 
+      style="border:0; max-width: 800px;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
 
         <section id="contacto" class="section">
             <h2>Contacto</h2>
@@ -53,6 +107,17 @@
 
     <footer class="footer">
         © 2025 Comunidad La Toglla. Todos los derechos reservados.
+        <div class="iconos-redes">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/comunidadlatoglla" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@latoglla.official" target="_blank" aria-label="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+  </div>
+
     </footer>
 
     <script src="js/main.js"></script>

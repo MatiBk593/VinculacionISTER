@@ -77,3 +77,18 @@ button:hover {
     text-align: center;
     padding: 1rem;
 }
+.iconos-redes {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.iconos-redes a {
+  color: white;
+}
+
+.iconos-redes a:hover {
+  color: var(--naranja);
+  }
