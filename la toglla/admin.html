@@ -18,7 +18,9 @@
             <input type="text" id="categoria" placeholder="Categoría" required>
             <textarea id="descripcion" placeholder="Descripción" required></textarea>
             <input type="text" id="contacto" placeholder="Contacto" required>
+
             <input type="file" id="imagen" name="imagen" accept="image/*" required>
+            
             <button type="submit">Agregar</button>
         </form>
         <div id="admin-emprendimientos" class="cards"></div>
@@ -29,7 +31,11 @@
         <form id="noticia-form" enctype="multipart/form-data">
             <input type="text" id="titulo" placeholder="Título" required>
             <textarea id="contenido" placeholder="Contenido" required></textarea>
+            
+            <!-- Cambiado: subir imagen -->
+            <label for="noticia_imagen">Subir imagen:</label>
             <input type="file" id="noticia_imagen" name="noticia_imagen" accept="image/*" required>
+            
             <button type="submit">Agregar</button>
         </form>
         <div id="admin-noticias" class="cards"></div>

@@ -1,28 +1,4 @@
 const express = require('express');
-const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/img');
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  }
-});
-const upload = multer({ storage: storage });
-
-router.post('/noticias', upload.single('noticia_imagen'), (req, res) => {
-  const { titulo, contenido } = req.body;
-  const imagenUrl = `/img/${req.file.filename}`;
-
-  // Aquí puedes guardar los datos en la base de datos
-  console.log({ titulo, contenido, imagenUrl });
-
-  res.json({ message: 'Noticia agregada correctamente', imagenUrl });
-});
-
-module.exports = router;
 
 module.exports = (db) => {
     const router = express.Router();

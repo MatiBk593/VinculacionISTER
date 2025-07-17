@@ -16,9 +16,7 @@ function cargarEmprendimientos() {
                     container.innerHTML += `
                         <div>
                             <img src="${emp.imagen_url}" alt="${emp.nombre}">
-                            <h
-                            
-                            >${emp.nombre}</h3>
+                            <h3>${emp.nombre}</h3>
                             <p><strong>Categoría:</strong> ${emp.categoria}</p>
                             <p>${emp.descripcion}</p>
                             <p><strong>Contacto:</strong> ${emp.contacto}</p>
