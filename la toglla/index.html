@@ -67,8 +67,72 @@
         </section>
 
         <section id="emprendimientos" class="section">
-            <h2>Emprendimientos</h2>
+          <h2>Emprendimientos</h2>
             <div id="emprendimientos-container" class="cards"></div>
+            <div class="botones-filtro">
+              <button onclick="filterCategory('all')">Todos</button>
+              <button onclick="filterCategory('gastronomia')">Gastronomía</button>
+              <button onclick="filterCategory('textiles')">Textiles</button>
+              <button onclick="filterCategory('turismo')">Turismo</button>
+              <button onclick="filterCategory('servicios')">Servicios</button>
+            </div>
+
+              <div class="grid-emprendimientos" id="emprendimientosGrid">
+                <!-- Tarjetas ejemplo -->
+                <div class="tarjeta categoria-textiles">
+                  <img src="https://via.placeholder.com/400x250" alt="Textil Asotogllatex">
+                  <div class="tarjeta-contenido">
+                    <h3>Textil Asotogllatex</h3>
+                    <p>Dueño: [Nombre]</p>
+                    <p>Tel: [098XXXXXXX]</p>
+                  </div>
+                </div>
+
+                <div class="tarjeta categoria-gastronomia">
+                  <img src="https://via.placeholder.com/400x250" alt="Helado de machica, dulce de aguacate">
+                  <div class="tarjeta-contenido">
+                    <h3>Helado de machica, dulce de aguacate</h3>
+                    <p>Dueño: [Nombre]</p>
+                    <p>Tel: [098XXXXXXX]</p>
+                  </div>
+                </div>
+
+                <div class="tarjeta categoria-servicios">
+                  <img src="https://via.placeholder.com/400x250" alt="Lubrilandia Benjamín">
+                  <div class="tarjeta-contenido">
+                    <h3>Lubrilandia Benjamín</h3>
+                    <p>Dueño: [Nombre]</p>
+                    <p>Tel: [098XXXXXXX]</p>
+                  </div>
+                </div>
+
+                <div class="tarjeta categoria-servicios">
+                  <img src="https://via.placeholder.com/400x250" alt="Servicios varios">
+                  <div class="tarjeta-contenido">
+                    <h3>Servicios varios y artículos del extranjero</h3>
+                    <p>Dueño: [Nombre]</p>
+                    <p>Tel: [098XXXXXXX]</p>
+                  </div>
+                </div>
+
+                <div class="tarjeta categoria-turismo">
+                  <img src="https://via.placeholder.com/400x250" alt="Mundo Eterno">
+                  <div class="tarjeta-contenido">
+                    <h3>Mundo Eterno</h3>
+                    <p>Dueño: [Nombre]</p>
+                    <p>Tel: [098XXXXXXX]</p>
+                  </div>
+                </div>
+
+                <div class="tarjeta categoria-turismo">
+                  <img src="https://via.placeholder.com/400x250" alt="Vivero Intervalles">
+                  <div class="tarjeta-contenido">
+                    <h3>Vivero Intervalles</h3>
+                    <p>Dueño: [Nombre]</p>
+                    <p>Tel: [098XXXXXXX]</p>
+                  </div>
+                </div>
+              </div>
         </section>
 
         <section id="noticias" class="section">
