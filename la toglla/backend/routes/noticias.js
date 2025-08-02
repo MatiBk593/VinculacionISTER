@@ -1,4 +1,18 @@
 const express = require('express');
+const multer = require('multer');
+const path = require('path');
+
+// Configuración de multer para guardar imágenes
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, uniqueSuffix + path.extname(file.originalname));
+    }
+});
+const upload = multer({ storage });
 
 module.exports = (db) => {
     const router = express.Router();
@@ -11,12 +25,14 @@ module.exports = (db) => {
         });
     });
 
-    // Crear nueva noticia
-    router.post('/', (req, res) => {
-        const { titulo, contenido, imagen_url } = req.body;
+    // Crear nueva noticia con imagen
+    router.post('/', upload.single('imagen'), (req, res) => {
+        const { titulo, contenido } = req.body;
+        const imagenPath = req.file ? `/uploads/${req.file.filename}` : null;
+
         db.query(
             'INSERT INTO noticias (titulo, contenido, imagen_url, fecha) VALUES (?, ?, ?, NOW())',
-            [titulo, contenido, imagen_url],
+            [titulo, contenido, imagenPath],
             (err, result) => {
                 if (err) return res.status(500).send(err);
                 res.status(201).json({ id: result.insertId });

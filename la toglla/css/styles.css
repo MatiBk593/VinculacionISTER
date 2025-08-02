@@ -6,7 +6,7 @@ body {
 }
 
 .header {
-    background-color: #8b4513;
+    background-color: #e06329;
     color: #fff;
     padding: 1rem;
     text-align: center;
@@ -32,7 +32,7 @@ body {
 }
 
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/800x400/?nature,community') center/cover;
+    background: linear-gradient( rgb(80, 107, 154), rgb(22, 54, 150)), url('https://source.unsplash.com/800x400/?nature,community') center/cover;
     color: #fff;
     text-align: center;
     padding: 4rem 1rem;
@@ -46,7 +46,7 @@ body {
 
 .cards div {
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #51aecd;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -58,7 +58,7 @@ body {
 }
 
 button {
-    background-color: #8b4513;
+    background-color: #e67322;
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
@@ -68,7 +68,7 @@ button {
 }
 
 button:hover {
-    background-color: #a0522d;
+    background-color: #e06329;
 }
 
 .grid-emprendimientos {
@@ -109,7 +109,7 @@ button:hover {
 }
 
 .footer {
-    background-color: #8b4513;
+    background-color: #e06329;
     color: #fff;
     text-align: center;
     padding: 1rem;

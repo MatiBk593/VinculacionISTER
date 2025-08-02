@@ -1,5 +1,10 @@
 const API_URL = "http://localhost:4001/api"; // Cambia localhost si subes al servidor
 
+// Función para evitar caché en imágenes
+function urlImagen(path) {
+    return `http://localhost:4001${path}?t=${Date.now()}`;
+}
+
 // =============================
 // PÁGINA PÚBLICA (index.html)
 // =============================
@@ -39,7 +44,7 @@ function cargarNoticias() {
                 data.forEach(not => {
                     container.innerHTML += `
                         <div>
-                            <img src="${not.imagen_url}" alt="${not.titulo}">
+                            <img src="${urlImagen(not.imagen_url)}" alt="${not.titulo}">
                             <h3>${not.titulo}</h3>
                             <p>${not.contenido}</p>
                             <p><small>${new Date(not.fecha).toLocaleDateString()}</small></p>
@@ -130,7 +135,7 @@ function cargarAdminNoticias() {
                 data.forEach(not => {
                     container.innerHTML += `
                         <div>
-                            <img src="${not.imagen_url}" alt="${not.titulo}">
+                            <img src="${urlImagen(not.imagen_url)}" alt="${not.titulo}">
                             <h3>${not.titulo}</h3>
                             <p>${not.contenido}</p>
                             <p><small>${new Date(not.fecha).toLocaleDateString()}</small></p>
@@ -148,21 +153,20 @@ if (empForm) {
     empForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const token = localStorage.getItem("token");
-        const nuevoEmp = {
-            nombre: document.getElementById("nombre").value,
-            categoria: document.getElementById("categoria").value,
-            descripcion: document.getElementById("descripcion").value,
-            contacto: document.getElementById("contacto").value,
-            imagen_url: document.getElementById("imagen_url").value
-        };
+
+        const formData = new FormData();
+        formData.append("nombre", document.getElementById("nombre").value);
+        formData.append("categoria", document.getElementById("categoria").value);
+        formData.append("descripcion", document.getElementById("descripcion").value);
+        formData.append("contacto", document.getElementById("contacto").value);
+        formData.append("imagen", document.getElementById("imagen_file").files[0]);
 
         fetch(`${API_URL}/emprendimientos`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify(nuevoEmp)
+            body: formData
         })
             .then(() => {
                 empForm.reset();
@@ -194,19 +198,18 @@ if (notForm) {
     notForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const token = localStorage.getItem("token");
-        const nuevaNoticia = {
-            titulo: document.getElementById("titulo").value,
-            contenido: document.getElementById("contenido").value,
-            imagen_url: document.getElementById("noticia_imagen_url").value
-        };
+
+        const formData = new FormData();
+        formData.append("titulo", document.getElementById("titulo").value);
+        formData.append("contenido", document.getElementById("contenido").value);
+        formData.append("imagen", document.getElementById("noticia_imagen_file").files[0]);
 
         fetch(`${API_URL}/noticias`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify(nuevaNoticia)
+            body: formData
         })
             .then(() => {
                 notForm.reset();
